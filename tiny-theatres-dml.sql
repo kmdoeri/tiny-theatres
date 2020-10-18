@@ -86,7 +86,7 @@ inner join theatre_show ts on s.show_id = ts.show_id;
 
 insert into reservation (customer_id, theatre_show_date_id, seat_id)
 with 
-	seats_with_theatre as (
+	seats_with_theatre as ( -- common table expressions
     select s.seat_id, s.seat_number, t.theatre_id, t.theatre_name 
     from theatre t
     inner join seats s on s.theatre_id = t.theatre_id),
@@ -103,6 +103,7 @@ inner join theatre_show_date tsd on tsd.theatre_show_id = ts.theatre_show_id and
 order by tsd.theatre_show_date_id, cwe.customer_id, swt.seat_id;
 
 
-select * from reservation order by reservation_id;
+-- select * from reservation order by reservation_id;
+
 
 
